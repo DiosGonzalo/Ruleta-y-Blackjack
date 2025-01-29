@@ -1,0 +1,91 @@
+CASINO ->
+
+JUEGOS:
+AVIONATOR -> GONZALO
+BLACKJACK -> PABLO
+RULETA -> HUGO
+
+------------------------------------------------
+*CLAVE PRINCIPAL -> SON LOS ATRIBUTOS QUE NO PUEDEN REPETIRSE (ID, Número DE JUGADOR, DNI....)
+
+**ESTRUCTURA DE PAQUETES -->**
+
+MODELOS >
+    Jugador ->
+        - Saldo del Jugador
+        - Posicion del Jugador (Por si hay mas de un jugador, lo usaremos para definir el orden en el que jugaran y para tener una Referencia) (CLAVE PRINCIPAL)
+
+CRUD >
+    CrudNombreModelo
+
+DATOS >
+    Datos_Blackjack ->
+        - Array BiDimensional -> {TITULOS DE LAS CARTAS} {VALORES DE LAS CARTAS}
+        
+    Datos_Ruleta ->
+        -ArrayUnidimensional
+
+CONTROLADORES > 
+    ControllerNombreModelo
+
+VISTA >
+
+MAIN >
+    Principal ->
+        - Menu para Jugar
+
+------------------------------------------------
+
+**DESCRIPCION DE LA ESTRUCTURACION DE LOS PAQUETES -->**
+
+Cada Modelo debe tener su CRUD y su Controller.
+Cada CRUD debe contener los siguientes metodos (Solo los que se usen):
+- Añadir
+- Eliminar
+- Modificar
+- 1 o + Buscar
+
+* Todo lo que no este en el CRUD, va al Controller.
+
+------------------------------------------------------------------------
+
+MODO DE JUEGO:
+
+RULETA ->
+    Entra Jugador. -> CASE en PRINCIPAL
+        - Preguntarle al jugador si quiere Jugar o ver la AYUDA.
+
+    Selecciona a que quiere apostar. ->
+
+        **
+        PARA ESTO HAY QUE HACER UN MENU APARTE DEL TABLERO DE APUESTAS EN EL QUE VAMOS ESCOGIENDO CUAL OPCION QUEREMOS ESCOGER:
+        ESTE MENU SE PREPARA EN EL VISTA RULETA CON SUS DATOS EN DATOS RULETA
+        **
+
+        En DatosRuleta debe haber un array con las opciones.
+        En Principal se deben imprimir las opciones de la ruleta junto con un ID.
+        El Jugador debe seleccionar una ID de una de las opciones.
+        Se debe revisar que el jugador tenga las cosas bien colocadas.
+
+    Indica el dinero que quiere apostar. ->
+        Se comprueba si el jugador dispone de ese saldo -
+            - Si no dispone de saldo se le envia al menu para que añada dinero a su saldo (Para añadirse dinero podriamos poner algun mini-juego.)
+            - Si dispone de saldo que juegue.
+
+    Se genera el número aleatorio de la RULETA
+        Desde el Principal se llama a la funcion en el controller y se genera el número.
+
+    Se comprueba si el jugador ha ganado ** ESTO ES LO MAS DIFICL
+        Se comprueba el número checkeando si el número generado forma parte de alguna de las condiciones del jugador.
+
+    Se le da dinero al jugador.
+        Un jugador.setSaldo(jugador.getSaldo()+DineroGanado)
+
+BLACKJACK ->
+
+
+FALTAS DE ORTOGRAFIA
+
+ESTA PUESTO --> TIENE QUE ESTAR:
+
+
